@@ -1,6 +1,9 @@
 FROM kong:latest
 
-ENV KONG_DATABASE="off" \
+ENV KONG_DATABASE=postgres \
+    KONG_PG_HOST=postgres \
+    KONG_PG_PASSWORD=master123 \
+    KONG_PG_USER=admin \
     KONG_DECLARATIVE_CONFIG="/usr/local/kong/declarative/kong.yml" \
     KONG_PROXY_LISTEN=0.0.0.0:8000 \
     KONG_PROXY_LISTEN_SSL=0.0.0.0:8443 \
