@@ -115,6 +115,22 @@ services:
         fluentd-async: "true"
         fluentd-address: localhost:24224
         tag: kong
+  konga:
+    image: pantsel/konga
+    restart: always
+    networks:
+      - backend
+    environment:
+      DB_ADAPTER: postgres
+      DB_HOST: postgres
+      DB_USER: admin
+      DB_PASSWORD: master123
+      DB_DATABASE: konga_db
+      NODE_ENV: development
+    depends_on:
+      - postgres
+    ports:
+      - "1337:1337"
   postgres:
     image: postgres:latest
     ports:
